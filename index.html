@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/night.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+    <style>
+      .full {
+        height: 100%;
+        width: 100%;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section class="full">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="164"
+            height="164"
+            viewBox="0 0 24 24"
+            style="margin-bottom: 2rem"
+            fill="rgb(231, 173, 82)"
+          >
+            <path
+              d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"
+            />
+          </svg>
+          <h6>
+            Analiza porównawcza przykładowych metod <br />
+            pozycjonowania wewnątrzbudynkowego<br />
+            z zastosowaniem modułu ESP32<br />
+            i wybranych standardów komunikacji radiowej
+          </h6>
+          <p style="position: absolute; bottom: 0; left: 0; font-size: large">
+            Autor: inż. Mikołaj Tkaczyk <br />
+            Promotor: dr inż. Artur Wiliński
+          </p>
+        </section>
+        <section>
+          <h3>Problem badawczy</h3>
+          <p>
+            Która z metod pozycjonowania daje najlepsze rezultaty?<br />Czy może
+            ma sens próba stworzenia nowej metody?
+          </p>
+        </section>
+        <section>
+          <h3>Dziedzina badań</h3>
+          <p>
+            Aktywne rozpoznawanie pozycji urządzenia końcowego <br />
+            w określonym zakresie budynku na bazie parametrów połączenia
+            radiowego.
+          </p>
+        </section>
+        <section>
+          <h3>Po co?</h3>
+          <p>
+            Wdrożenie rozwiązania u obecnego pracodawcy<br />
+            w kierunku monitorowania aktywności pracowników.
+          </p>
+        </section>
+        <section>
+          <p>
+            Monitorowanie przebiegu treningu psich sportów (flyball, agility).
+          </p>
+          <p style="transform: scale(0.7); opacity: 0.4">
+            (Zależnie od uzyskanych wyników)
+          </p>
+          <img src="assets/finish-line-jump.gif" style="width: 50%" />
+        </section>
+        <section data-auto-animate>
+          <h3>Jakie urządzenia zostaną użyte?</h3>
+        </section>
+        <section data-auto-animate>
+          <h3>Jakie urządzenia zostaną użyte?</h3>
+          <img src="assets/SBC-NodeMCU-ESP32-01.png" style="width: 20%" />
+          <p>ESP32 (ESP-WROOM-32)</p>
+        </section>
+        <section data-auto-animate>
+          <h3>Jakie urządzenia zostaną użyte?</h3>
+          <img src="assets/RASPBERRY_PI_3B_PLUS_001.png" style="width: 29%" />
+          <p>Raspberry Pi 3B+</p>
+        </section>
+        <section>
+          <img
+            src="assets/types_of_positioning.PNG"
+            style="width: 50%; filter: invert(180) contrast(0.87)"
+          />
+        </section>
+        <section data-auto-animate>
+          <h3>Triangulacja</h3>
+          <ul></ul>
+        </section>
+        <section data-auto-animate>
+          <h3>Triangulacja</h3>
+          <ul>
+            <li>Lateracja</li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <h3>Triangulacja</h3>
+          <ul>
+            <li>Lateracja</li>
+            <li>Angulacja</li>
+          </ul>
+        </section>
+        <section data-auto-animate data-auto-animate-restart>
+          <h3>Lateracja</h3>
+        </section>
+        <section data-auto-animate>
+          <h3>Lateracja</h3>
+          <img src="assets/Trilateration.png" style="width: 30%" />
+        </section>
+        <section data-auto-animate>
+          <h3>Lateracja</h3>
+          <ul>
+            <li>Układ równań liniowych</li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <h3>Lateracja</h3>
+          <ul>
+            <li>Układ równań liniowych</li>
+            <li>Metoda najmniejszych kwadratów</li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <h3>Lateracja</h3>
+          <ul>
+            <li>Układ równań liniowych</li>
+            <li>Metoda najmniejszych kwadratów</li>
+            <li>Rozkład według wartości osobliwych</li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <h3>Lateracja</h3>
+          <ul>
+            <li>Układ równań liniowych</li>
+            <li>Metoda najmniejszych kwadratów</li>
+            <li>Rozkład według wartości osobliwych</li>
+            <li>
+              Inne metody takie jak środek ciężkości figury opartej o pole
+              przecięcia
+            </li>
+          </ul>
+        </section>
+        <section data-auto-animate data-auto-animate-restart>
+          <h3>Jak znaleźć odległość?</h3>
+        </section>
+        <section data-auto-animate>
+          <h3>Jak znaleźć odległość?</h3>
+          <p>
+            Na bazie parametru RSSI połączenia Bluetooth Low Energy. Istnieją
+            różne metody przeliczania RSSI na odległość:
+          </p>
+        </section>
+        <section data-auto-animate>
+          <h3>Jak znaleźć odległość?</h3>
+          <p>
+            Na bazie parametru RSSI połączenia Bluetooth Low Energy. Istnieją
+            różne metody przeliczania RSSI na odległość:
+          </p>
+          <ul>
+            <li>Prosty wzór z funkcji wykładniczej</li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <h3>Jak znaleźć odległość?</h3>
+          <p>
+            Na bazie parametru RSSI połączenia Bluetooth Low Energy. Istnieją
+            różne metody przeliczania RSSI na odległość:
+          </p>
+          <ul>
+            <li>Prosty wzór z funkcji wykładniczej</li>
+            <li>Utworzenie funkcji przez regresję</li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <h3>Jak znaleźć odległość?</h3>
+          <p>
+            Na bazie parametru RSSI połączenia Bluetooth Low Energy. Istnieją
+            różne metody przeliczania RSSI na odległość:
+          </p>
+          <ul>
+            <li>Prosty wzór z funkcji wykładniczej</li>
+            <li>Utworzenie funkcji przez regresję</li>
+            <li>
+              Powiązanie wielu parametrów RSSI do stworzenia funkcji
+              dwuwymiarowej
+            </li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <h3>Jak znaleźć odległość?</h3>
+          <p>Time of Arrival - Time Difference of Arrival - Time of Flight</p>
+        </section>
+        <section data-auto-animate>
+          <h3>Jak znaleźć odległość?</h3>
+          <p>Time of Arrival - Time Difference of Arrival - Time of Flight</p>
+          <p>
+            Bazuje na prędkości fali radiowej i różnicy czasu wysłania -
+            otrzymania.<br />Trudny temat ze względów synchronizacji i
+            dokładności pomiarów.
+          </p>
+        </section>
+        <section data-auto-animate data-auto-animate-restart>
+          <h3>Angulacja</h3>
+        </section>
+        <section data-auto-animate>
+          <h3>Angulacja</h3>
+          <img src="assets/angle_of_arrival.png" style="width: 30%" />
+        </section>
+        <section data-auto-animate data-auto-animate-restart>
+          <h3>Analiza sceny</h3>
+        </section>
+        <section data-auto-animate>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="96"
+            height="96"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M3.25 9.65q-.175-.125-.213-.313t.113-.387q1.55-2.125 3.888-3.3t4.987-1.175q2.65 0 5 1.138T20.95 8.9q.15.225.096.4t-.196.3q-.15.125-.35.113t-.35-.213q-1.375-1.95-3.538-2.987t-4.587-1.038q-2.425 0-4.55 1.038T3.95 9.5q-.15.225-.35.25t-.35-.1Zm11.6 12.325q-2.6-.65-4.25-2.588T8.95 14.65q0-1.25.9-2.1t2.175-.85q1.275 0 2.175.85t.9 2.1q0 .825.625 1.388t1.475.562q.85 0 1.45-.563t.6-1.387q0-2.9-2.125-4.875T12.05 7.8q-2.95 0-5.075 1.975t-2.125 4.85q0 .6.113 1.5t.537 2.1q.075.225-.012.4t-.288.25q-.2.075-.388-.013t-.262-.287q-.375-.975-.537-1.938T3.85 14.65q0-3.325 2.413-5.575t5.762-2.25q3.375 0 5.8 2.25t2.425 5.575q0 1.25-.887 2.087t-2.163.838q-1.275 0-2.188-.838T14.1 14.65q0-.825-.612-1.388t-1.463-.562q-.85 0-1.463.563T9.95 14.65q0 2.425 1.438 4.05t3.712 2.275q.225.075.3.25t.025.375q-.05.175-.2.3t-.375.075ZM6.5 4.425q-.2.125-.4.063t-.3-.263q-.1-.2-.05-.362T6 3.575q1.4-.75 2.925-1.15t3.1-.4q1.6 0 3.125.388t2.95 1.112q.225.125.263.3t-.038.35q-.075.175-.25.275t-.425-.025q-1.325-.675-2.738-1.038t-2.887-.362q-1.45 0-2.85.338T6.5 4.425Zm2.95 17.2q-1.475-1.55-2.263-3.163T6.4 14.65q0-2.275 1.65-3.838t3.975-1.562q2.325 0 4 1.563T17.7 14.65q0 .225-.138.363t-.362.137q-.2 0-.35-.138t-.15-.362q0-1.875-1.388-3.138t-3.287-1.262q-1.9 0-3.263 1.263T7.4 14.65q0 2.025.7 3.438t2.05 2.837q.15.15.15.35t-.15.35q-.15.15-.35.15t-.35-.15Zm7.55-1.7q-2.225 0-3.863-1.5T11.5 14.65q0-.2.138-.35t.362-.15q.225 0 .363.15t.137.35q0 1.875 1.35 3.075t3.15 1.2q.15 0 .425-.025t.575-.075q.225-.05.388.063t.212.337q.05.2-.075.35t-.325.2q-.45.125-.787.138t-.413.012Z"
+            />
+          </svg>
+          <h3>Analiza sceny</h3>
+          <h3>Fingerprinting</h3>
+        </section>
+        <section data-auto-animate>
+          <img
+            src="assets/RSSI_map.PNG"
+            style="width: 50%; filter: invert(180) contrast(0.87)"
+          />
+        </section>
+        <section data-auto-animate data-auto-animate-restart>
+          <h3>Detekcja zbliżenia</h3>
+        </section>
+        <section data-auto-animate>
+          <h3>Detekcja zbliżenia</h3>
+          <p>NFC - RFID</p>
+        </section>
+        <section data-auto-animate>
+          <h3>Postęp prac:</h3>
+        </section>
+        <section data-auto-animate>
+          <h3>Postęp prac:</h3>
+          <ul>
+            <li>skonfigurowano środowisko deweloperskie dla ESP32</li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <h3>Postęp prac:</h3>
+          <ul>
+            <li>skonfigurowano środowisko deweloperskie dla ESP32</li>
+            <li>przeprowadzono testy łączności BLE i WiFi 2.4GHz</li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <h3>Postęp prac:</h3>
+          <ul>
+            <li>skonfigurowano środowisko deweloperskie dla ESP32</li>
+            <li>przeprowadzono testy łączności BLE i WiFi 2.4GHz</li>
+            <li>
+              zebrano i przyswojono część bibliografii, <br />głównie o metodach
+              triangulacji, zamianie RSSI na odległość <br />oraz sposobach
+              machine learningowych
+            </li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <h3>Postęp prac:</h3>
+          <ul>
+            <li>skonfigurowano środowisko deweloperskie dla ESP32</li>
+            <li>przeprowadzono testy łączności BLE i WiFi 2.4GHz</li>
+            <li>
+              zebrano i przyswojono część bibliografii, <br />głównie o metodach
+              triangulacji, zamianie RSSI na odległość <br />oraz sposobach
+              machine learningowych
+            </li>
+            <li>
+              napisano pierwszy rozdział prezentujący problem
+              <br />i obecnie używane rozwiązania
+            </li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <h3>Postęp prac:</h3>
+          <ul>
+            <li>skonfigurowano środowisko deweloperskie dla ESP32</li>
+            <li>przeprowadzono testy łączności BLE i WiFi 2.4GHz</li>
+            <li>
+              zebrano i przyswojono część bibliografii, <br />głównie o metodach
+              triangulacji, zamianie RSSI na odległość <br />oraz sposobach
+              machine learningowych
+            </li>
+            <li>
+              napisano pierwszy rozdział prezentujący problem
+              <br />i obecnie używane rozwiązania
+            </li>
+            <li>
+              przeprowadzono serię pomiarów RSSI dla środowiska testowego,
+              <br />na bazie którego zostaną przeprowadzone obliczenia
+            </li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <h3>Postęp prac:</h3>
+          <ul>
+            <li>skonfigurowano środowisko deweloperskie dla ESP32</li>
+            <li>przeprowadzono testy łączności BLE i WiFi 2.4GHz</li>
+            <li>
+              zebrano i przyswojono część bibliografii, <br />głównie o metodach
+              triangulacji, zamianie RSSI na odległość <br />oraz sposobach
+              machine learningowych
+            </li>
+            <li>
+              napisano pierwszy rozdział prezentujący problem
+              <br />i obecnie używane rozwiązania
+            </li>
+            <li>
+              przeprowadzono serię pomiarów RSSI dla środowiska testowego,
+              <br />na bazie którego zostaną przeprowadzone obliczenia
+            </li>
+            <li>obecnie stan pracy to opisywanie istniejącej literatury</li>
+          </ul>
+        </section>
+        <section>
+          <img src="assets/srodowisko.jpg" style="width: 50%" />
+        </section>
+        <section data-auto-animate>
+          <h3>Konspekt pracy:</h3>
+          <ul>
+            <li>Spis treści</li>
+          </ul>
+          <div style="margin: 1rem 0 1rem 0">
+            <ol>
+              <li>Wstęp - opisuący temat</li>
+              <li>Zapoznanie z bibliografią i istniejącymi badaniami</li>
+              <li>Opis implementacji środowiska testowego</li>
+              <li>Sposób przeprowadzenia badań</li>
+              <li>
+                Praca nad materiałem badawczym
+                <ol>
+                  <li>Konwersja RSSI - odległość</li>
+                  <li>Metody trilateracji</li>
+                  <li>Fingerprinting za pomocą klasyfikatorów ML</li>
+                  <li>
+                    Metody zwiększania dokładności i odporności na zmiany
+                    środowiska
+                  </li>
+                </ol>
+              </li>
+              <li>Wyniki i podsumowanie pracy</li>
+            </ol>
+          </div>
+          <ul>
+            <li>Bibliografia</li>
+          </ul>
+        </section>
+        <section>
+          <ul>
+            <li style="font-size: x-large; color: rgb(231, 173, 82)">
+              Sensor fusion for indoor positioning system through improved RSSI
+              and PDR methods -
+              <span style="font-size: medium; color: white"
+                >Hamidreza Mehrabian, Reza Ravanmehr | Future Generation
+                Computer Systems 138 (2023) 254–269</span
+              >
+            </li>
+            <li style="font-size: x-large; color: rgb(231, 173, 82)">
+              TTSL: An indoor localization method based on Temporal
+              Convolutional Network using time-series RSSI -
+              <span style="font-size: medium; color: white"
+                >Bing Jia, Jingbin Liu, Tao Feng, Baoqi Huang, Thar Baker,
+                Hissam Tawfik | Computer Communications 193 (2022) 293–301</span
+              >
+            </li>
+            <li style="font-size: x-large; color: rgb(231, 173, 82)">
+              When RSSI encounters deep learning: An area localization scheme
+              for pervasive sensing systems -
+              <span style="font-size: medium; color: white"
+                >Zhishu Shen, Tiehua Zhang, Atsushi Tagami, Jiong Jin | Journal
+                of Network and Computer Applications 173 (2021) 102852</span
+              >
+            </li>
+            <li style="font-size: x-large; color: rgb(231, 173, 82)">
+              RSSI quantization and genetic algorithm based localization in
+              wireless sensor networks -
+              <span style="font-size: medium; color: white"
+                >Qianqian Rena, Yang Zhang, Ioanis Nikolaidis, Jinbao Li, Yu Pan
+                | Ad Hoc Networks 107 (2020) 102255</span
+              >
+            </li>
+            <li style="font-size: x-large; color: rgb(231, 173, 82)">
+              Human positioning estimation method using received signal strength
+              indicator (RSSI) in a wireless sensor network -
+              <span style="font-size: medium; color: white"
+                >Kimio Oguchi, Shou Marutab, Dai Hanawa | Procedia Computer
+                Science 34 ( 2014 ) 126 – 132
+              </span>
+            </li>
+            <li style="font-size: x-large; color: rgb(231, 173, 82)">
+              An Empirical Comparison of Machine Learning Models for Time Series
+              Forecasting -
+              <span style="font-size: medium; color: white"
+                >Nesreen K. Ahmed , Amir F. Atiya, Neamat El Gayar, Hisham
+                El-Shishiny | Econometric Reviews Volume 29, 2010 - Issue 5-6
+                Pages 594-621
+              </span>
+            </li>
+            <li style="font-size: x-large; color: rgb(231, 173, 82)">
+              MyLib: Smart Library Indoor Navigation Using Bluetooth Low Energy
+              with Triangulation Method -
+              <span style="font-size: medium; color: white"
+                >Tri Nopiani Damayanti, Dadan Nur Ramadan, Indah Mutia Utami |
+                INTL JOURNAL OF ELECTRONICS AND TELECOMMUNICATIONS, 2022, VOL.
+                68, NO. 2, PP. 293-298
+              </span>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <ul>
+            <li style="font-size: x-large; color: rgb(231, 173, 82)">
+              Increasing RSSI Localization Accuracy with Distance Reference
+              Anchor in Wireless Sensor Networks -
+              <span style="font-size: medium; color: white"
+                >Ugur Bekcibasi, Mahmut Tenruh | Acta Polytechnica Hungarica
+                Vol. 11, No. 8, 2014
+              </span>
+            </li>
+            <li style="font-size: x-large; color: rgb(231, 173, 82)">
+              Experimental comparison of RSSI-based localization algorithms for
+              indoor wireless sensor networks -
+              <span style="font-size: medium; color: white"
+                >Giovanni Zanca, Francesco Zorzi, Andrea Zanella, Michele Zorzi
+                | REALWSN '08: Proceedings of the workshop on Real-world
+                wireless sensor networks April 2008 Pages 1–5
+              </span>
+            </li>
+            <li style="font-size: x-large; color: rgb(231, 173, 82)">
+              Is RSSI a Reliable Parameter in Sensor Localization Algorithms –
+              An Experimental Study -
+              <span style="font-size: medium; color: white"
+                >Ambili Thottam Parameswaran, Mohammad Iftekhar Husain, Shambhu
+                Upadhyaya | 2009
+              </span>
+            </li>
+            <li style="font-size: x-large; color: rgb(231, 173, 82)">
+              Kolban's Book on ESP32 -
+              <span style="font-size: medium; color: white"
+                >Neil Kolban | May 2017
+              </span>
+            </li>
+            <li style="font-size: x-large; color: rgb(231, 173, 82)">
+              Determination of a position in three dimensions using
+              trilateration and approximate distances -
+              <span style="font-size: medium; color: white"
+                >William S. Murphy Jr. and Willy Hereman | November 28, 1999
+              </span>
+            </li>
+            <li style="font-size: x-large; color: rgb(231, 173, 82)">
+              Indoor Positioning Algorithm Based on the Improved RSSI Distance
+              Model -
+              <span style="font-size: medium; color: white"
+                >Guoquan Li, Enxu Geng, Zhouyang Ye, Yongjun Xu, Jinzhao Lin, Yu
+                Pang | Sensors (Basel) 2018 Aug 27;18(9):2820
+              </span>
+            </li>
+            <li style="font-size: x-large; color: rgb(231, 173, 82)">
+              Semantic Node-RED for Rapid Development of Interoperable
+              Industrial IoT Applications -
+              <span style="font-size: medium; color: white"
+                >Aparna Saisree Thuluva, Darko Anicic, Sebastian Rudolph,
+                Malintha Adikari | Semantic Web, vol. 11, no. 6, pp. 949-975,
+                2020
+              </span>
+            </li>
+          </ul>
+        </section>
+        <section data-auto-animate>
+          <h3>Serdecznie dziękuję za uwagę</h3>
+        </section>
+        <section data-auto-animate>
+          <h3>Serdecznie dziękuję za uwagę</h3>
+          <p>Czekam na ewentualne pytania</p>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@1.1.0/plugin/mermaid/mermaid.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        width: "100%",
+        height: "100%",
+        mermaid: {
+          // flowchart: {
+          //   curve: 'linear',
+          // },
+        },
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid],
+      });
+    </script>
+  </body>
+</html>
